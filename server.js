@@ -19,6 +19,11 @@ app.use(express.json());
 // Routes
 app.use('/api/letters', lettersRouter);
 
+// Health Check API
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Server is running' });
+});
+
 // Database Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/music-love-letters';
 
